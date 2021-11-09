@@ -83,9 +83,49 @@ class LeagueStats
     averages
     find_team_name(averages.key(averages.values.min))
   end
+  
+  def total_away_games(team_id)
+    games = []
+    @games.each do |game|
+      if game.away_team_id == team_id
+        games << game.game_id
+      end
+    end
+    games.uniq.count
+  end 
+
+  def total_away_goals(team_id)
+    goals = 0
+    @games.each do |game|
+      if game.away_team_id == team_id
+        goals += game.away_goals.to_i
+      end
+    end
+    goals.to_f
+  end
+
+  def total_home_games(team_id)
+    games = []
+    @games.each do |game|
+      if game.away_team_id == team_id
+        games << game.game_id
+      end
+    end
+    games.uniq.count
+  end 
+
+  def total_home_goals(team_id)
+    goals = 0
+    @games.each do |game|
+      if game.away_team_id == team_id
+        goals += game.away_goals.to_i
+      end
+    end
+    goals.to_f
+  end
 
   def away_teams_list
-   @game_teams.find_all do |game|
+    @game_teams.find_all do |game|
       game.hoa == "away"
     end
   end
@@ -98,8 +138,8 @@ class LeagueStats
 
   def highest_scoring_visitor
     scores = away_teams_list.reduce({}) do |hash, team|
-      hash[team.team_id] = team.goals.to_i
-      hash
+      hash[team.team_id] = ((total_away_goals(team.team_id)) / (total_away_games(team.team_id))).round(2)
+      hash 
     end
     find_team_name(scores.key(scores.values.max))
   end
