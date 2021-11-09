@@ -3,9 +3,10 @@ require_relative 'team.rb'
 require_relative 'teams.rb'
 
 class LeagueStats
+
   attr_reader :game_teams,
               :games
-
+ 
   def initialize(file_1, file_2, file_3)
     @game_teams = self.format(file_1)
     @teams      = self.format2(file_2)
