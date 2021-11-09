@@ -1,7 +1,7 @@
 require 'csv'
 require_relative 'team.rb'
 
-class LeagueStats < Team
+class LeagueStats
   attr_reader :game_teams, 
               :games 
 
