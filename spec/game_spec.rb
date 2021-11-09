@@ -19,7 +19,8 @@ RSpec.describe Game do
 
   it 'has attributes' do 
     expect(@game.first.away_goals).to eq("2")
-    expect(@game.first.away_team_id).to eq("6")
+    expect(@game.first.away_team_id).to eq("3")
+    expect(@game.first.home_team_id).to eq("6")
     expect(@game.first.date_time).to eq("5/16/13")
     expect(@game.first.game_id).to eq("2012030221")
     expect(@game.first.home_goals).to eq("3")
