@@ -1,15 +1,17 @@
 require 'csv'
 require_relative 'team.rb'
+require_relative 'teams.rb'
 
 class LeagueStats
-  attr_reader :game_teams, 
-              :games 
 
+  attr_reader :game_teams,
+              :games
+ 
   def initialize(file_1, file_2, file_3)
     @game_teams = self.format(file_1)
     @teams      = self.format2(file_2)
     @games      = self.format3(file_3)
-  end 
+  end
 
   def format(file)
     league_file = CSV.read(file, headers: true, header_converters: :symbol)
@@ -33,7 +35,7 @@ class LeagueStats
   end
 
   def count_of_teams
-    @game_teams.count
+    @teams.count
   end
 
   def find_team_name(team_id)
@@ -64,7 +66,7 @@ class LeagueStats
     games.uniq.count
   end
 
-  def best_offense 
+  def best_offense
    averages = @game_teams.reduce({}) do |hash, team|
       hash[team.team_id] = ((total_goals(team.team_id)) / (total_games(team.team_id))).round(2)
       hash
@@ -73,7 +75,7 @@ class LeagueStats
     find_team_name(averages.key(averages.values.max))
   end
 
-  def worst_offense 
+  def worst_offense
    averages = @game_teams.reduce({}) do |hash, team|
       hash[team.team_id] = ((total_goals(team.team_id)) / (total_games(team.team_id))).round(2)
       hash
@@ -81,7 +83,7 @@ class LeagueStats
     averages
     find_team_name(averages.key(averages.values.min))
   end
-  
+
   def away_teams_list
    @game_teams.find_all do |game|
       game.hoa == "away"
