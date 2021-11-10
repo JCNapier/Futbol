@@ -154,6 +154,7 @@ class LeagueStats
       hash[team.team_id] = team.goals.to_i
       hash
     end
+    # require "pry"; binding.pry
     find_team_name(scores.key(scores.values.min))
   end
 

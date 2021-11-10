@@ -63,7 +63,11 @@ class StatTracker
     @league_stat.highest_scoring_home_team
   end
 
-  
+  def lowest_scoring_visitor
+    @league_stat.lowest_scoring_visitor
+  end
+
+
 
   def to_array(file_path)
     rows = []
