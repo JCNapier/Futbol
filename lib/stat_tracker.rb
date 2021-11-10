@@ -55,9 +55,9 @@ class StatTracker
     @league_stat.worst_offense
   end
 
-  # def highest_scoring_visitor
-  #   @league_stat.highest_scoring_visitor
-  # end
+  def highest_scoring_visitor
+    @league_stat.highest_scoring_visitor
+  end
 
   # def lowest_scoring_home_team
   #   @league_stat.lowest_scoring_home_team

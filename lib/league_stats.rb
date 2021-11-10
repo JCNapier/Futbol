@@ -6,7 +6,7 @@ class LeagueStats
 
   attr_reader :game_teams,
               :games
- 
+
   def initialize(file_1, file_2, file_3)
     @game_teams = self.format(file_1)
     @teams      = self.format2(file_2)
@@ -83,7 +83,7 @@ class LeagueStats
     averages
     find_team_name(averages.key(averages.values.min))
   end
-  
+
   def total_away_games(team_id)
     games = []
     @games.each do |game|
@@ -92,7 +92,7 @@ class LeagueStats
       end
     end
     games.uniq.count
-  end 
+  end
 
   def total_away_goals(team_id)
     goals = 0
@@ -112,7 +112,7 @@ class LeagueStats
       end
     end
     games.uniq.count
-  end 
+  end
 
   def total_home_goals(team_id)
     goals = 0
@@ -138,9 +138,14 @@ class LeagueStats
 
   def highest_scoring_visitor
     scores = away_teams_list.reduce({}) do |hash, team|
-      hash[team.team_id] = ((total_away_goals(team.team_id)) / (total_away_games(team.team_id))).round(2)
-      hash 
+      if total_away_goals(team.team_id) == 0
+        hash[team.team_id] = 0
+      else
+        hash[team.team_id] = ((total_away_goals(team.team_id)) / (total_away_games(team.team_id))).round(2)
+        hash
+      end
     end
+    # require "pry"; binding.pry
     find_team_name(scores.key(scores.values.max))
   end
 
