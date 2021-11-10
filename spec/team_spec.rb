@@ -1,23 +1,24 @@
-require 'csv' 
+require_relative 'spec_helper'
+require 'csv'
 require 'rspec'
 require './lib/team.rb'
 
-describe Team do 
+describe Team do
 	team_file = CSV.read('./data/game_teams_sample.csv', headers: true, header_converters: :symbol)
   team_array = team_file.map do |row|
   Team.new(row)
-	end 
+	end
 
-  before(:each) do 
+  before(:each) do
   	@team = team_array
   end
 
-  it 'exists' do 
+  it 'exists' do
 		expect(@team).to be_an(Array)
   	expect(@team.sample).to be_an_instance_of(Team)
   end
 
-	it 'has attributes' do 
+	it 'has attributes' do
 		expect(@team.first.game_id).to eq("2012030221")
     expect(@team.first.team_id).to eq("3")
     expect(@team.first.hoa).to eq("away")
@@ -35,4 +36,3 @@ describe Team do
     expect(@team.first.takeaways).to eq("7")
 	end
 end
-

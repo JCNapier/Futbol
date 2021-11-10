@@ -32,6 +32,7 @@ class GameStats
     @games.each do |game|
       total_games += 1
     end
+    
 
     total_home_wins = 0
     @games.each do |game|

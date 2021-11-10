@@ -1,3 +1,4 @@
+require_relative 'spec_helper'
 require 'rspec'
 require './lib/league_stats.rb'
 
@@ -20,19 +21,19 @@ describe LeagueStats do
 		expect(league.total_games("3")).to eq(16)
 	end
 
-	it 'total away games' do 
+	it 'total away games' do
 		expect(league.total_away_games("6")).to eq(4)
 	end
 
-	it 'total away goals' do 
+	it 'total away goals' do
 		expect(league.total_away_goals("6")).to eq(12.0)
 	end
 
-	it 'total home games' do 
+	it 'total home games' do
 		expect(league.total_home_games("6")).to eq(4)
 	end
 
-	it 'total home goals' do 
+	it 'total home goals' do
 		expect(league.total_home_goals("6")).to eq(12.0)
 	end
 
@@ -61,16 +62,16 @@ describe LeagueStats do
 	it '#highest_scoring_visitor' do
 		expect(league.highest_scoring_visitor).to eq("FC Dallas")
 	end
-	
-	it '#lowest_scoring_visitor' do 
+
+	it '#lowest_scoring_visitor' do
 		expect(league.lowest_scoring_visitor).to eq("Sporting Kansas City")
 	end
 
-	it '#highest scoring home team' do 
+	it '#highest scoring home team' do
 		expect(league.highest_scoring_home_team).to eq("New England Revolution")
 	end
 
-	it '#lowest scoring home team' do 
+	it '#lowest scoring home team' do
 		expect(league.lowest_scoring_home_team).to eq("Portland Timbers")
 	end
 

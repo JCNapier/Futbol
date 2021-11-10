@@ -1,6 +1,8 @@
+# require_relative 'spec_helper'
 require 'csv'
 require_relative 'team.rb'
 require_relative 'teams.rb'
+
 
 class LeagueStats
 

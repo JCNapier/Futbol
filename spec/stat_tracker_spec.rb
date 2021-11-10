@@ -1,4 +1,9 @@
+require_relative 'spec_helper'
+# require 'simplecov'
+# SimpleCov.start
 require './lib/stat_tracker'
+# require_relative 'spec_helper'
+
 
 
 RSpec.describe "Stat Tracker" do
@@ -25,11 +30,11 @@ RSpec.describe "Stat Tracker" do
   #   expect(@stat_tracker.game_teams.count).to eq(31)
   # end
 
-  xit 'can create an array of hashes from a CSV' do
-    expect(@stat_tracker.to_array(@team_path)).to be_an(Array)
-    expect(@stat_tracker.to_array(@team_path).first).to be_a(Hash)
-    expect(@stat_tracker.to_array(@team_path).count).to eq(32)
-    expect(@stat_tracker.to_array(@team_path).first.count).to eq(6)
-    expect(@stat_tracker.to_array(@team_path).sample.count).to eq(6)
-  end
+  # xit 'can create an array of hashes from a CSV' do
+  #   expect(@stat_tracker.to_array(@team_path)).to be_an(Array)
+  #   expect(@stat_tracker.to_array(@team_path).first).to be_a(Hash)
+  #   expect(@stat_tracker.to_array(@team_path).count).to eq(32)
+  #   expect(@stat_tracker.to_array(@team_path).first.count).to eq(6)
+  #   expect(@stat_tracker.to_array(@team_path).sample.count).to eq(6)
+  # end
 end
